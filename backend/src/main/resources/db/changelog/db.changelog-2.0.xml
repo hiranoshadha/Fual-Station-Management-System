@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert-products-sri-lanka" author="admin">
+        <insert tableName="product" schemaName="lioc_filling">
+            <column name="productid" value="1"/>
+            <column name="product" value="Petrol 92 Octane"/>
+            <column name="unitprice" value="350.00"/>
+        </insert>
+        <insert tableName="product" schemaName="lioc_filling">
+            <column name="productid" value="2"/>
+            <column name="product" value="Petrol 95 Octane"/>
+            <column name="unitprice" value="375.00"/>
+        </insert>
+        <insert tableName="product" schemaName="lioc_filling">
+            <column name="productid" value="3"/>
+            <column name="product" value="Diesel"/>
+            <column name="unitprice" value="340.00"/>
+        </insert>
+        <insert tableName="product" schemaName="lioc_filling">
+            <column name="productid" value="4"/>
+            <column name="product" value="Super Diesel"/>
+            <column name="unitprice" value="370.00"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-employees-and-users" author="admin">
+        <!-- Insert User Details -->
+        <insert tableName="user" schemaName="lioc_filling">
+            <column name="userid" value="1"/>
+            <column name="email" value="i@gmail.com"/>
+            <column name="password" value="12345678"/>
+            <column name="usertype" value="EMPLOYEE"/>
+        </insert>
+        <insert tableName="user" schemaName="lioc_filling">
+            <column name="userid" value="2"/>
+            <column name="email" value="su@gmail.com"/>
+            <column name="password" value="12345678"/>
+            <column name="usertype" value="EMPLOYEE"/>
+        </insert>
+        <insert tableName="user" schemaName="lioc_filling">
+            <column name="userid" value="3"/>
+            <column name="email" value="sa@gmail.com"/>
+            <column name="password" value="12345678"/>
+            <column name="usertype" value="EMPLOYEE"/>
+        </insert>
+
+        <!-- Insert Employee Details -->
+        <insert tableName="employee" schemaName="lioc_filling">
+            <column name="employeeid" value="1"/>
+            <column name="name" value="Kamal Kannangara"/>
+            <column name="nic" value="987654321V"/>
+            <column name="mobile" value="0712345678"/>
+            <column name="role" value="INVENTORY_MANAGER"/>
+            <column name="userid" value="1"/>
+        </insert>
+        <insert tableName="employee" schemaName="lioc_filling">
+            <column name="employeeid" value="2"/>
+            <column name="name" value="Nimal Shantha"/>
+            <column name="nic" value="123456789V"/>
+            <column name="mobile" value="0771234567"/>
+            <column name="role" value="SUPPLIER_MANAGER"/>
+            <column name="userid" value="2"/>
+        </insert>
+        <insert tableName="employee" schemaName="lioc_filling">
+            <column name="employeeid" value="3"/>
+            <column name="name" value="Saman Kotagoda"/>
+            <column name="nic" value="456789123V"/>
+            <column name="mobile" value="0789876543"/>
+            <column name="role" value="SALES_MANAGER"/>
+            <column name="userid" value="3"/>
+        </insert>
+    </changeSet>
+
+    <!-- Optional Dummy Data -->
+    <changeSet id="insert-suppliers" author="admin">
+        <!-- Insert Supplier Details -->
+        <insert tableName="supplier" schemaName="lioc_filling">
+            <column name="supplierid" value="1"/>
+            <column name="name" value="Ceylon Petroleum Corporation"/>
+            <column name="mobile" value="0112345678"/>
+        </insert>
+        <insert tableName="supplier" schemaName="lioc_filling">
+            <column name="supplierid" value="2"/>
+            <column name="name" value="Lanka Indian Oil Corporation"/>
+            <column name="mobile" value="0776543210"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-supplier-supply-product" author="admin">
+        <insert tableName="supplier_supply_product" schemaName="lioc_filling">
+            <column name="supplierid" value="1"/> 
+            <column name="productid" value="1"/> 
+        </insert>
+        <insert tableName="supplier_supply_product" schemaName="lioc_filling">
+            <column name="supplierid" value="1"/> 
+            <column name="productid" value="3"/> 
+        </insert>
+        <insert tableName="supplier_supply_product" schemaName="lioc_filling">
+            <column name="supplierid" value="2"/> 
+            <column name="productid" value="2"/> 
+        </insert>
+        <insert tableName="supplier_supply_product" schemaName="lioc_filling">
+            <column name="supplierid" value="2"/> 
+            <column name="productid" value="4"/> 
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-inventory" author="admin">
+        <!-- Insert Inventory Details -->
+        <insert tableName="inventory" schemaName="lioc_filling">
+            <column name="inventoryid" value="1"/>
+            <column name="productid" value="1"/>
+            <column name="supplierid" value="1"/>
+            <column name="qty" value="15000"/>
+        </insert>
+        <insert tableName="inventory" schemaName="lioc_filling">
+            <column name="inventoryid" value="2"/>
+            <column name="productid" value="2"/>
+            <column name="supplierid" value="2"/>
+            <column name="qty" value="12000"/>
+        </insert>
+        <insert tableName="inventory" schemaName="lioc_filling">
+            <column name="inventoryid" value="3"/>
+            <column name="productid" value="3"/>
+            <column name="supplierid" value="1"/>
+            <column name="qty" value="10000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-customer" author="admin">
+        <!-- Insert Customer Details -->
+        <insert tableName="customer" schemaName="lioc_filling">
+            <column name="customerid" value="1"/>
+            <column name="name" value="Rajitha Perera"/>
+            <column name="nic" value="951234567V"/>
+            <column name="mobile" value="0771234567"/>
+            <column name="creditamount" value="1500.00"/>
+            <column name="userid" value="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

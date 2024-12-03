@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create-table-user" author="admin">
+        <createTable tableName="user" schemaName="lioc_filling">
+            <column name="userid" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(45)"/>
+            <column name="password" type="VARCHAR(45)"/>
+            <column name="usertype" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-customer" author="admin">
+        <createTable tableName="customer" schemaName="lioc_filling">
+            <column name="customerid" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="nic" type="VARCHAR(45)"/>
+            <column name="mobile" type="VARCHAR(45)"/>
+            <column name="creditamount" type="DOUBLE"/>
+            <column name="userid" type="INT"/>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="customer"
+                baseColumnNames="userid"
+                referencedTableName="user"
+                referencedColumnNames="userid"
+                constraintName="fk_customer_user1"/>
+    </changeSet>
+
+    <changeSet id="create-table-supplier" author="admin">
+        <createTable tableName="supplier" schemaName="lioc_filling">
+            <column name="supplierid" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="mobile" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-product" author="admin">
+        <createTable tableName="product" schemaName="lioc_filling">
+            <column name="productid" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="product" type="VARCHAR(45)"/>
+            <column name="unitprice" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-supplier-supply-product" author="admin">
+        <createTable tableName="supplier_supply_product" schemaName="lioc_filling">
+            <column name="supplierid" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="productid" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="supplier_supply_product"
+                baseColumnNames="supplierid"
+                referencedTableName="supplier"
+                referencedColumnNames="supplierid"
+                constraintName="fk_supplier_has_product_supplier1"/>
+        <addForeignKeyConstraint
+                baseTableName="supplier_supply_product"
+                baseColumnNames="productid"
+                referencedTableName="product"
+                referencedColumnNames="productid"
+                constraintName="fk_supplier_has_product_product1"/>
+    </changeSet>
+
+    <changeSet id="create-table-inventory" author="admin">
+        <createTable tableName="inventory" schemaName="lioc_filling">
+            <column name="inventoryid" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="productid" type="INT"/>
+            <column name="supplierid" type="INT"/>
+            <column name="qty" type="DOUBLE"/>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="inventory"
+                baseColumnNames="supplierid, productid"
+                referencedTableName="supplier_supply_product"
+                referencedColumnNames="supplierid, productid"
+                constraintName="fk_inventory_supplier_supply_product1"/>
+    </changeSet>
+
+    <changeSet id="create-table-payment" author="admin">
+        <createTable tableName="payment" schemaName="lioc_filling">
+            <column name="paymentid" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nic" type="VARCHAR(45)"/>
+            <column name="date" type="DATETIME"/>
+            <column name="amount" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-employee" author="admin">
+        <createTable tableName="employee" schemaName="lioc_filling">
+            <column name="employeeid" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="nic" type="VARCHAR(45)"/>
+            <column name="mobile" type="VARCHAR(45)"/>
+            <column name="role" type="VARCHAR(45)"/>
+            <column name="userid" type="INT"/>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="employee"
+                baseColumnNames="userid"
+                referencedTableName="user"
+                referencedColumnNames="userid"
+                constraintName="fk_employee_user1"/>
+    </changeSet>
+
+    <changeSet id="create-table-sales" author="admin">
+        <createTable tableName="sales" schemaName="lioc_filling">
+            <column name="salesid" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="machine" type="VARCHAR(45)"/>
+            <column name="date" type="DATE"/>
+            <column name="productid" type="INT"/>
+            <column name="qty" type="DOUBLE"/>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="sales"
+                baseColumnNames="productid"
+                referencedTableName="product"
+                referencedColumnNames="productid"
+                constraintName="fk_sales_product"/>
+    </changeSet>
+
+</databaseChangeLog>
