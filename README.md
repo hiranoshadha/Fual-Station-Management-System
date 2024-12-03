@@ -1,5 +1,5 @@
 
-# 🚀 Fuel Management System  
+# 🚀 Fuel Station Management System  
 
 A comprehensive **Fuel Management System** designed to streamline operations, monitor resources, and enhance efficiency for fuel stations. Built with a modern tech stack:  
 - **Frontend**: React with Tailwind CSS  
