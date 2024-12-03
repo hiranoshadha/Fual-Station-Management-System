@@ -1,3 +1,4 @@
+
 # 🚀 Fuel Management System  
 
 A comprehensive **Fuel Management System** designed to streamline operations, monitor resources, and enhance efficiency for fuel stations. Built with a modern tech stack:  
@@ -56,3 +57,97 @@ Ensure you have the following installed:
 ```bash  
 git clone https://github.com/username/fuel-management-system.git  
 cd fuel-management-system  
+```  
+
+#### 2. Frontend Setup  
+```bash  
+cd frontend  
+npm install  
+npm start  
+```  
+
+#### 3. Backend Setup  
+- Open the backend project in your preferred IDE (e.g., IntelliJ IDEA or Eclipse).  
+- Configure your database connection in the `application.properties` file:  
+```properties  
+spring.datasource.url=jdbc:mysql://localhost:3306/fuel_management  
+spring.datasource.username=your_mysql_username  
+spring.datasource.password=your_mysql_password  
+spring.jpa.hibernate.ddl-auto=update  
+```  
+- Run the Spring Boot application.  
+
+#### 4. Database Setup  
+- Import the provided SQL schema file into **MySQL Workbench**.  
+
+#### 5. Access the App  
+- Frontend: `http://localhost:3000`  
+- Backend API: `http://localhost:8080/api`  
+
+---
+
+## 📂 Project Structure  
+
+### Frontend  
+```
+frontend/  
+├── src/  
+│   ├── components/  
+│   ├── pages/  
+│   ├── services/  
+│   └── App.js  
+├── tailwind.config.js  
+└── package.json  
+```  
+
+### Backend  
+```
+backend/  
+├── src/main/java/com/fuelmanagement/  
+│   ├── controllers/  
+│   ├── models/  
+│   ├── repositories/  
+│   └── services/  
+├── src/main/resources/  
+│   ├── application.properties  
+└── pom.xml  
+```  
+
+---
+
+## 🔐 Authentication and Authorization    
+- **Role-Based Access Control (RBAC)** to define permissions for each user type.  
+
+---
+
+## 📊 ER Diagram  
+Here’s the basic database structure for the system:  
+
+```plaintext
+Customer (id, name, email, password, etc.)  
+Admin (id, name, role, etc.)  
+FuelInventory (id, fuelType, stockLevel, etc.)  
+Sales (id, customerId, fuelType, quantity, price, etc.)  
+Supplier (id, name, contactInfo, etc.)  
+```  
+
+---
+
+## 🤝 Contributing  
+
+1. Fork the repository.  
+2. Create a new branch (`feature/your-feature-name`).  
+3. Commit your changes.  
+4. Push to the branch.  
+5. Open a pull request.  
+
+---
+
+## 📜 License  
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.  
+
+---
+
+## 👨‍💻 Authors  
+- **Hiran Oshadha** - *Full-Stack Development*  
+- Contributions are welcome!  
